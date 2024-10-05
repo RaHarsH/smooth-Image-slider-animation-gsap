@@ -1,0 +1,242 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing:  border-box;
+}
+
+html, body {
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #0f0f0f;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+h1 {
+    color: #fff;
+    font-size: 36px;
+    font-weight: 500;
+}
+
+a, p {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+}
+
+.blurry-prev {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(80px);
+}
+
+.col {
+    position: relative;
+    padding: 1em;
+}
+
+.site-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+nav {
+    display: flex;
+    gap: 1em;
+}
+
+.header {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.project-preview {
+    flex: 2;
+}
+
+.project-details {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    width: 50%;
+}
+
+.title {
+    margin-bottom: 0.5em;
+}
+
+.info {
+    margin-bottom: 1em;
+}
+
+.title, .credits, .director, .cinematographer , .line {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}  
+
+
+.title h1 {
+    position: relative;
+    transform: translateY(40px);
+    will-change: transform;
+}
+
+.info p, .line span, .credits p, .director p, .cinematographer p {
+    display: inline-block;
+    position: relative;
+    transform: translateY(20px);
+    will-change: transform;
+}
+
+.project-img {
+    position: absolute;
+    left: 1em;
+    bottom: 1em;
+    width: 75%;
+    height: 50%;
+    overflow: hidden;
+    will-change: transform;
+}
+
+.project-img img {
+    will-change: transform;
+}
+
+.gallery-wrapper {
+    z-index: 2;
+    overflow: auto;
+    padding-left: 0.75em;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+}
+
+.gallery-wrapper::-webkit-scrollbar {
+    width: 12px; 
+}
+
+.gallery-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 2px; 
+}
+
+.gallery-wrapper::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3); 
+    border-radius: 2px; 
+}
+
+
+.gallery {
+    width: 100%;
+    height: 300vh;
+    display: flex;
+    flex-direction: column;
+    font-display: column;
+    gap: 0.75em;
+}
+
+.item {
+    width: 100px;
+    height: 200px;
+    position: relative;
+    flex: 1;
+    background-color: #aeaeae;
+    cursor: pointer;
+}
+
+.item::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.65);
+    transition: background-color 0.5s ease-in-out;
+    transition-delay: 0.5s;
+}
+
+.item.active::after {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .site-info {
+        flex: 0.5;
+        border-left: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .header {
+        top: unset;
+        bottom: 1em;
+        transform: none;
+    }
+
+    .site-info .copy {
+        display: none;
+    }
+
+    .project-details {
+        width: calc(100% - 1em);
+    }
+
+    .project-img {
+        width: 93%;
+    }
+
+    .gallery-wrapper {
+        border-right: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .gallery {
+        padding-top: 0.75em;
+        flex-direction: row;
+        width: 300vw;
+        height: 120px;
+        font-display: row;
+    }
+
+    .item {
+        width: 50px;
+        height: 100px;
+        position: relative;
+        flex: 1;
+        background-color: #aeaeae;
+        cursor: pointer;
+    }
+}
+
