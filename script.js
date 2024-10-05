@@ -3,7 +3,7 @@ import { galleryItems } from './data.js';
 document.addEventListener("DOMContentLoaded", () => {
     const gallery = document.querySelector('.gallery');
     const blurryPrev = document.querySelector('.blurry-prev');
-    const projectPreview = document.querySelector('.project-preview'); // Fixed spelling mistake
+    const projectPreview = document.querySelector('.project-preview'); 
     const itemCount = galleryItems.length;
 
     let activeItemIndex = 0;
